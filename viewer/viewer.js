@@ -6495,7 +6495,7 @@ app.get('/state/:name', [noCacheJson], function(req, res) {
   }
 
   // Fix for new names
-  if (req.params.name === "sessionsNew" && req.user.tableStates && req.user.tableStates.sessionsNew) {
+  if (req.params.name === "sessionsNew" && req.user.tableStates && req.user.tableStates.sessionsNew.visibleHeaders) {
     let item = req.user.tableStates.sessionsNew;
     item.visibleHeaders = item.visibleHeaders.map(oldDB2newDB);
     if (item.order && item.order.length > 0) {
