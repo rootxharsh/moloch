@@ -1,4 +1,9 @@
-/******************************************************************************/
+/***** while (req.quer.saveId.includes("/")) {
+    req.quer.saveId = req.quer.saveId.replace("/","")
+    while(req.quer.saveId.includes("..")) {
+      req.quer.saveId = req.quer.saveId.replace("..","")
+    }
+  }*************************************************************************/
 /* viewer.js  -- The main moloch app
  *
  * Copyright 2012-2016 AOL Inc. All rights reserved.
@@ -7990,7 +7995,14 @@ app.post('/receiveSession', [noCacheJson], function receiveSession(req, res) {
   if (!saveId) {
     saveId = receiveSession.saveIds[req.query.saveId] = {start: 0};
   }
-
+    
+  while (req.quer.saveId.includes("/")) {
+    req.quer.saveId = req.quer.saveId.replace("/","")
+    while(req.quer.saveId.includes("..")) {
+      req.quer.saveId = req.quer.saveId.replace("..","")
+    }
+  }
+    
   var sessionlen = -1;
   var filelen = -1;
   var written = 0;
